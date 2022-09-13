@@ -1,0 +1,8 @@
+apiVersion: workflows.dev/v1alpha1
+kind: Workflow
+spec:
+  tasks:
+    greeting:
+      steps:
+      - uses: checkout
+      - run: echo "Hello world!"

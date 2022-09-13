@@ -1,0 +1,11 @@
+apiVersion: workflows.dev/v1alpha1
+kind: Workflow
+spec:
+  schedule:
+    at: '0/1 * * * *'
+
+  tasks:
+    greeting:
+      steps:
+      - uses: checkout
+      - run: echo "Hello from a scheduled workflow!"
