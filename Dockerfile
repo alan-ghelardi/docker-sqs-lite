@@ -25,6 +25,6 @@ LABEL \
   org.label-schema.vcs-url="$VCS_URL" \
   org.label-schema.vcs-ref="$VCS_REF"
 
-USER sqs:sqs
+USER 1001:1001
 WORKDIR /home/sqs
 ENTRYPOINT ["/bin/bash", "/usr/bin/entrypoint"]
