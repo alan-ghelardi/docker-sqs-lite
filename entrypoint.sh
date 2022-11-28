@@ -10,7 +10,7 @@ create_queues() {
 
     IFS=',' read -ra queues <<< ${QUEUE_NAMES:-''}
     if [ ! -z ${queues-} ]; then
-        for queue in ${queues}; do
+        for queue in "${queues[@]}"; do
             aws sqs create-queue --queue-name="$queue" \
                 --attributes '{"FifoQueue":"true"}' \
                 --region=us-east-1 \
@@ -19,4 +19,4 @@ create_queues() {
     fi
 }
 
-create_queues & sqslite --host=$SQS_HOST --port $SQS_PORT
+create_queues & sqslite --host $SQS_HOST --port $SQS_PORT

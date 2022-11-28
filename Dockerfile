@@ -1,6 +1,6 @@
 FROM node:alpine
 
-RUN npm install -g sqslite
+RUN npm install -g sqslite@2.1.1
 
 RUN apk add --no-cache aws-cli bash
 
