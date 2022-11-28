@@ -2,10 +2,11 @@
 
 set -euo pipefail
 
+SQS_HOST="0.0.0.0"
 SQS_PORT=3000
 
 create_queues() {
-    wait-for-it -q localhost:$SQS_PORT --timeout=10
+    wait-for-it -q $SQS_HOST:$SQS_PORT --timeout=10
 
     IFS=',' read -ra queues <<< ${QUEUE_NAMES:-''}
     if [ ! -z ${queues-} ]; then
@@ -18,4 +19,4 @@ create_queues() {
     fi
 }
 
-create_queues & sqslite --port $SQS_PORT
+create_queues & sqslite --host=$SQS_HOST --port $SQS_PORT
